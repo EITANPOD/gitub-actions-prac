@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./backend
-          file: /home/eitanpod/development/log-on-bootcamp-main/gitub-actions-prac/backend/Dockerfile
+          file: /home/eitanpod/development/log-on-bootcamp-main/gitub-actions-prac/backend
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/appbackend:0.1
 
@@ -47,7 +47,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
-          file: /home/eitanpod/development/log-on-bootcamp-main/gitub-actions-prac/feontend/Dockerfile
+          file: /home/eitanpod/development/log-on-bootcamp-main/gitub-actions-prac/feontend
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/appfrontend:0.1
         # What this does:
