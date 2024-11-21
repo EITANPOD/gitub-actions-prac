@@ -11,18 +11,27 @@ jobs:
 
     steps:
       - name: checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo apt-get install -y docker-compose
+
 
       - name: Build the docker-compose stack
-        run: docker-compose up -d
-
-      - name: Sleep
-        uses: jakejarvis/wait-action@master
-        with:
-        time: '60s'
+        run: docker-compose up -d --build
 
       - name: Check running containers
         run: docker ps
 
-      - name: run curl test
-        run: curl localhost:5001
+      - name: Wait for backend to be available
+        run: |
+          until curl -sSf http://localhost:5001; do
+            echo "Waiting for backend to start..."
+            sleep 5
+          done
+
+      - name: Show logs for debugging
+        run: docker-compose logs
