@@ -13,8 +13,11 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
 
+      - name: Setup docker-compose
+        uses: KengoTODA/actions-setup-docker-compose@v1.2.3
+            
       - name: Build the docker-compose
-        run: docker-compose up -d --build
+        run: docker-compose up -d
 
       - name: Check running containers
         run: docker ps
