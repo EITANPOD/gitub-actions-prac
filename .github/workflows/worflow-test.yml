@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout repository
@@ -15,8 +15,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup docker-compose
-        uses: KengoTODA/actions-setup-docker-compose@v1
+      # - name: Setup docker-compose
+      #   uses: KengoTODA/actions-setup-docker-compose@v1
             
       - name: Build the docker-compose
         run: docker-compose up -d
