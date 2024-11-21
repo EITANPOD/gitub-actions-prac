@@ -35,12 +35,21 @@ jobs:
         # as repository secrets. These must be set in GitHub's settings.
 
       # Step 4: Build and push Docker image
-      - name: Build and push Docker images
+      - name: Build and push backend images
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./backend
+          file: /home/eitanpod/development/log-on-bootcamp-main/gitub-actions-prac/backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/your-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/appbackend:0.1
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          file: /home/eitanpod/development/log-on-bootcamp-main/gitub-actions-prac/feontend/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/appfrontend:0.1
         # What this does:
         # - `context: .` tells Docker to use the current directory.
         # - `push: true` uploads the image to DockerHub.
