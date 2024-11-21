@@ -1,4 +1,4 @@
-name: eitans workflow
+name: eitan-workflow
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build-and-deploy:do
     runs-on: ubuntu-latest
 
     steps:
       - name: checkout code
         uses: actions/checkout@v3
 
-      - name: Build the docker-compose stack
+      - name: Build the docker-compose
         run: docker-compose up -d --build
 
       - name: Check running containers
