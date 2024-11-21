@@ -13,12 +13,6 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Docker
-        run: |
-          sudo apt-get install -y docker.io
-          sudo apt-get install -y docker-compose
-
-
       - name: Build the docker-compose stack
         run: docker-compose up -d --build
 
