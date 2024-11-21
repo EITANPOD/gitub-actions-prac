@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./backend
-          file: ./backend
+          file: ./backend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/appbackend:0.1
 
@@ -47,7 +47,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
-          file: ./feontend
+          file: ./feontend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/appfrontend:0.1
         # What this does:
